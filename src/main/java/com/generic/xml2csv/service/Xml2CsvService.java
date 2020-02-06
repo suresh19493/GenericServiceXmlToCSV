@@ -20,11 +20,11 @@ public class Xml2CsvService {
 	private RestUtil restUtil;
 	@Value("${csvFileName}")
 	private String csvFileName;
-	public void getCsvFromXmlURL(@RequestParam("xmlUrl") String xmlUrl)
+	public String getCsvFromXmlURL(@RequestParam("xmlUrl") String xmlUrl)
 			throws TransformerFactoryConfigurationError, Exception {
 		LOGGER.info("xmlURL:" + xmlUrl);
 		String xmlResource = restUtil.invokeGetMethod(xmlUrl);
 		LOGGER.info("xmlResource:" + xmlResource);
-		XmlUtil.convertStringToXMLDocument(xmlResource);
+		return XmlUtil.convertStringToXMLDocument(xmlResource);
 	}
 }

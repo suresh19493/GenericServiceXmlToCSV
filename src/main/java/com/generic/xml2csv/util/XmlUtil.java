@@ -28,7 +28,7 @@ public class XmlUtil {
 	private static final String NEW_LINE_CHAR = "\n";
 	private static final String CSV_EXTENSION = ".csv";
 
-	public static void convertStringToXMLDocument(String xmlData)
+	public static String convertStringToXMLDocument(String xmlData)
 			throws TransformerFactoryConfigurationError, Exception {
 		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 		DocumentBuilder builder = factory.newDocumentBuilder();
@@ -45,6 +45,8 @@ public class XmlUtil {
 		LOGGER.info("Elements in the node:" + elements);
 		String fileName = nodeName + CSV_EXTENSION;
 		generateCsvFile(fileName, elements, nodeListOfDocument);
+		return fileName;
+
 	}
 
 	private static List<String> getElementsInTheNode(NodeList nodeListOfDocument) {
